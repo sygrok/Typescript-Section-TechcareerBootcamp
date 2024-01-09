@@ -228,7 +228,7 @@ let tsClass = () => {
   console.log("RAM: " + computerIntance._ram);
   console.log("VERSION: " + computerIntance._newVersion);
 };
-tsClass();
+// tsClass();
 
 // #### GENERICS #################################################
 // TypeScript Generics
@@ -237,6 +237,82 @@ tsClass();
 // TypeScript Inheritance
 // this
 // super
+const tsInheritance = () => {
+  // CLASS
+  class Computer {
+    // FIELD
+    _mainCard: string;
+    _cpu: string;
+    _ram: number;
+    _harddisk: string;
+    _newVersion: boolean;
+
+    // CONSTRUCTOR
+    constructor(
+      mainCard: string,
+      cpu: string,
+      ram: number,
+      harddisk: string,
+      newVersion: boolean
+    ) {
+      this._mainCard = mainCard;
+      this._cpu = cpu;
+      this._ram = ram;
+      this._harddisk = harddisk;
+      this._newVersion = newVersion;
+    }
+
+    // FUNCTION
+    computerInformation(): void {
+      let result = `Details => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+      console.log(result);
+    }
+  } //end class Computer
+
+  // 2.CLASS (Lenovo)
+  class Lenovo extends Computer {
+    computerInformation(): void {
+      let result = `Details => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+      console.log(result);
+    }
+  }
+
+  // 3.CLASS (Monster)
+  class Monster extends Computer {
+    computerInformation(): void {
+      let result = `Details => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+      console.log(result);
+    }
+  }
+
+  // INSTANCE (Computer)
+  const computerInstance = new Computer("Computer", "i7", 16, "512gb", true);
+  console.log("MAIN CARD: " + computerInstance._mainCard);
+  console.log("CPU: " + computerInstance._cpu);
+  console.log("RAM: " + computerInstance._ram);
+  console.log("HARD DISK: " + computerInstance._harddisk);
+  console.log("Version: " + computerInstance._newVersion);
+  computerInstance.computerInformation();
+  console.log("**********************************************");
+
+  const lenovoInstance = new Lenovo("Lenovo", "i10", 8, "1TB", false);
+  console.log("MAIN CARD: " + lenovoInstance._mainCard);
+  console.log("CPU: " + lenovoInstance._cpu);
+  console.log("RAM: " + lenovoInstance._ram);
+  console.log("HARD DISK: " + lenovoInstance._harddisk);
+  console.log("Version: " + lenovoInstance._newVersion);
+  lenovoInstance.computerInformation();
+  console.log("**********************************************");
+
+  const monsterInstance = new Monster("Monster", "i7", 8, "1TB", false);
+  console.log("MAIN CARD: " + monsterInstance._mainCard);
+  console.log("CPU: " + monsterInstance._cpu);
+  console.log("RAM: " + monsterInstance._ram);
+  console.log("HARD DISK: " + monsterInstance._harddisk);
+  console.log("Version: " + monsterInstance._newVersion);
+  monsterInstance.computerInformation();
+};
+tsInheritance();
 
 // #### ABSTRACT #################################################
 // TypeScript Abstract

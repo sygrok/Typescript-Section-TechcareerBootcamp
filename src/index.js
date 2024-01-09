@@ -39,6 +39,21 @@ TypeScript Compiler
 Javascript Interpreter
 Java: Interpreter and Compiler
 */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // TypeScript Editor
 // TypeScript İlk Program
 // TypeScript Değişkenler
@@ -197,13 +212,81 @@ var tsClass = function () {
     console.log("RAM: " + computerIntance._ram);
     console.log("VERSION: " + computerIntance._newVersion);
 };
-tsClass();
+// tsClass();
 // #### GENERICS #################################################
 // TypeScript Generics
 // #### INHERITANCE #################################################
 // TypeScript Inheritance
 // this
 // super
+var tsInheritance = function () {
+    // CLASS
+    var Computer = /** @class */ (function () {
+        // CONSTRUCTOR
+        function Computer(mainCard, cpu, ram, harddisk, newVersion) {
+            this._mainCard = mainCard;
+            this._cpu = cpu;
+            this._ram = ram;
+            this._harddisk = harddisk;
+            this._newVersion = newVersion;
+        }
+        // FUNCTION
+        Computer.prototype.computerInformation = function () {
+            var result = "Details => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            console.log(result);
+        };
+        return Computer;
+    }()); //end class Computer
+    // 2.CLASS (Lenovo)
+    var Lenovo = /** @class */ (function (_super) {
+        __extends(Lenovo, _super);
+        function Lenovo() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Lenovo.prototype.computerInformation = function () {
+            var result = "Details => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            console.log(result);
+        };
+        return Lenovo;
+    }(Computer));
+    // 3.CLASS (Monster)
+    var Monster = /** @class */ (function (_super) {
+        __extends(Monster, _super);
+        function Monster() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Monster.prototype.computerInformation = function () {
+            var result = "Details => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            console.log(result);
+        };
+        return Monster;
+    }(Computer));
+    // INSTANCE (Computer)
+    var computerInstance = new Computer("Computer", "i7", 16, "512gb", true);
+    console.log("MAIN CARD: " + computerInstance._mainCard);
+    console.log("CPU: " + computerInstance._cpu);
+    console.log("RAM: " + computerInstance._ram);
+    console.log("HARD DISK: " + computerInstance._harddisk);
+    console.log("Version: " + computerInstance._newVersion);
+    computerInstance.computerInformation();
+    console.log("**********************************************");
+    var lenovoInstance = new Lenovo("Lenovo", "i10", 8, "1TB", false);
+    console.log("MAIN CARD: " + lenovoInstance._mainCard);
+    console.log("CPU: " + lenovoInstance._cpu);
+    console.log("RAM: " + lenovoInstance._ram);
+    console.log("HARD DISK: " + lenovoInstance._harddisk);
+    console.log("Version: " + lenovoInstance._newVersion);
+    lenovoInstance.computerInformation();
+    console.log("**********************************************");
+    var monsterInstance = new Monster("Monster", "i7", 8, "1TB", false);
+    console.log("MAIN CARD: " + monsterInstance._mainCard);
+    console.log("CPU: " + monsterInstance._cpu);
+    console.log("RAM: " + monsterInstance._ram);
+    console.log("HARD DISK: " + monsterInstance._harddisk);
+    console.log("Version: " + monsterInstance._newVersion);
+    monsterInstance.computerInformation();
+};
+tsInheritance();
 // #### ABSTRACT #################################################
 // TypeScript Abstract
 // #### INTERFACE #################################################
