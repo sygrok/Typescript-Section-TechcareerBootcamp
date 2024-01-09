@@ -159,17 +159,51 @@ function tsFunction5(x, y, z) {
     return parseInt(x) + y + parseFloat(z);
 }
 var result5 = tsFunction5("44", 10, "99.12");
-console.log(result5);
+// console.log(result5);
 // #### ENUM #################################################
 // TypeScript Enum
+var tsEnum = function () {
+    // ENUM
+    var colors;
+    (function (colors) {
+        colors["color1"] = "k\u0131rm\u0131z\u0131";
+        colors["color2"] = "mavi";
+        colors["color3"] = "sar\u0131";
+    })(colors || (colors = {}));
+    console.log(colors.color1);
+    var otherColor = colors.color3;
+    console.log(otherColor);
+};
+tsEnum();
 // #### CLASS #################################################
-// TypeScript Sınıflar
-// OOP
-// this,super
+var tsClass = function () {
+    var Computer = /** @class */ (function () {
+        // CONSTRUCTOR
+        function Computer(computerName, ram, newVersion) {
+            this._computerName = computerName;
+            this._ram = ram;
+            this._newVersion = newVersion;
+        }
+        // FUNCTION
+        Computer.prototype.computerInformation = function () {
+            var result = "Computer Name: ".concat(this._computerName, " Computer Ram: ").concat(this._ram, " Computer version: ").concat(this._newVersion);
+            console.log(result);
+        }; //end function
+        return Computer;
+    }()); //end Computer
+    // INSTANCE
+    var computerIntance = new Computer("Nvidia", 16, false);
+    console.log("NAME: " + computerIntance._computerName);
+    console.log("RAM: " + computerIntance._ram);
+    console.log("VERSION: " + computerIntance._newVersion);
+};
+tsClass();
 // #### GENERICS #################################################
 // TypeScript Generics
 // #### INHERITANCE #################################################
 // TypeScript Inheritance
+// this
+// super
 // #### ABSTRACT #################################################
 // TypeScript Abstract
 // #### INTERFACE #################################################
@@ -178,7 +212,6 @@ console.log(result5);
 // TypeScript Never
 // TypeScript Type Assertion
 // TypeScript Type Aliases
-// TypeScript Array Methods
 // TypeScript Object Methods
 // TypeScript Decorators
 // TypeScript Mixins

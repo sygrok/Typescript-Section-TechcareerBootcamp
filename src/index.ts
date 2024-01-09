@@ -182,23 +182,53 @@ function tsFunction5(x: any, y: number, z: string): number {
 }
 
 const result5 = tsFunction5("44", 10, "99.12");
-console.log(result5);
-
-// tsconfig.json
-// tsc -w index.ts
-// nodemon
-// Web pack
-// live-server
-// Babil
-// Node JS Server- HTML- Document - URL - EXPRESS
+// console.log(result5);
 
 // #### ENUM #################################################
 // TypeScript Enum
+let tsEnum = () => {
+  // ENUM
+  enum colors {
+    color1 = "kırmızı",
+    color2 = "mavi",
+    color3 = "sarı",
+  }
+
+  console.log(colors.color1);
+  let otherColor: colors = colors.color3;
+  console.log(otherColor);
+};
+tsEnum();
 
 // #### CLASS #################################################
-// TypeScript Sınıflar
-// OOP
-// this,super
+let tsClass = () => {
+  class Computer {
+    // DATA TYPES
+    _computerName: string;
+    _ram: number;
+    _newVersion: boolean;
+
+    // CONSTRUCTOR
+    constructor(computerName: string, ram: number, newVersion: boolean) {
+      this._computerName = computerName;
+      this._ram = ram;
+      this._newVersion = newVersion;
+    }
+
+    // FUNCTION
+    computerInformation(): void {
+      let result = `Computer Name: ${this._computerName} Computer Ram: ${this._ram} Computer version: ${this._newVersion}`;
+      console.log(result);
+    } //end function
+  } //end Computer
+
+  // INSTANCE
+  let computerIntance = new Computer("Nvidia", 16, false);
+  console.log("NAME: " + computerIntance._computerName);
+  console.log("RAM: " + computerIntance._ram);
+  console.log("VERSION: " + computerIntance._newVersion);
+};
+tsClass();
 
 // #### GENERICS #################################################
 // TypeScript Generics
