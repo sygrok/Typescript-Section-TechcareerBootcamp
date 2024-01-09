@@ -271,16 +271,56 @@ const tsInheritance = () => {
 
   // 2.CLASS (Lenovo)
   class Lenovo extends Computer {
+    // Field
+    _usb: string;
+
+    // Constructor
+    constructor(
+      mainCard: string,
+      cpu: string,
+      ram: number,
+      harddisk: string,
+      newVersion: boolean,
+      usb: string
+    ) {
+      //super: üst atadan gelen bilgileri gösterir
+      super(mainCard, cpu, ram, harddisk, newVersion);
+
+      //this global state gösterir.
+      this._usb = usb;
+    }
+
+    // function
     computerInformation(): void {
-      let result = `Details => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+      let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion} USB: ${this._usb}`;
       console.log(result);
     }
   }
 
   // 3.CLASS (Monster)
   class Monster extends Computer {
+    // Field
+    _typeC: string;
+
+    // Constructor
+    constructor(
+      mainCard: string,
+      cpu: string,
+      ram: number,
+      harddisk: string,
+      newVersion: boolean,
+      typeC: string
+    ) {
+      //super: üst atadan gelen bilgileri gösterir
+      super(mainCard, cpu, ram, harddisk, newVersion);
+
+      //this global state gösterir.
+      this._typeC = typeC;
+    }
+
+    // function
     computerInformation(): void {
-      let result = `Details => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+      let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion} USB: ${this._typeC}`;
       console.log(result);
     }
   }
@@ -295,21 +335,32 @@ const tsInheritance = () => {
   computerInstance.computerInformation();
   console.log("**********************************************");
 
-  const lenovoInstance = new Lenovo("Lenovo", "i10", 8, "1TB", false);
+  const lenovoInstance = new Lenovo("Lenovo", "i10", 8, "1TB", false, "2");
   console.log("MAIN CARD: " + lenovoInstance._mainCard);
   console.log("CPU: " + lenovoInstance._cpu);
   console.log("RAM: " + lenovoInstance._ram);
   console.log("HARD DISK: " + lenovoInstance._harddisk);
   console.log("Version: " + lenovoInstance._newVersion);
+  console.log("Usb: " + lenovoInstance._usb);
+
   lenovoInstance.computerInformation();
   console.log("**********************************************");
 
-  const monsterInstance = new Monster("Monster", "i7", 8, "1TB", false);
+  const monsterInstance = new Monster(
+    "Monster",
+    "i7",
+    8,
+    "1TB",
+    false,
+    "TypeC"
+  );
   console.log("MAIN CARD: " + monsterInstance._mainCard);
   console.log("CPU: " + monsterInstance._cpu);
   console.log("RAM: " + monsterInstance._ram);
   console.log("HARD DISK: " + monsterInstance._harddisk);
   console.log("Version: " + monsterInstance._newVersion);
+  console.log("Type: " + monsterInstance._typeC);
+
   monsterInstance.computerInformation();
 };
 tsInheritance();

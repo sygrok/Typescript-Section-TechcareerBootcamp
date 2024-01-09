@@ -240,11 +240,17 @@ var tsInheritance = function () {
     // 2.CLASS (Lenovo)
     var Lenovo = /** @class */ (function (_super) {
         __extends(Lenovo, _super);
-        function Lenovo() {
-            return _super !== null && _super.apply(this, arguments) || this;
+        // Constructor
+        function Lenovo(mainCard, cpu, ram, harddisk, newVersion, usb) {
+            //super: üst atadan gelen bilgileri gösterir
+            var _this = _super.call(this, mainCard, cpu, ram, harddisk, newVersion) || this;
+            //this global state gösterir.
+            _this._usb = usb;
+            return _this;
         }
+        // function
         Lenovo.prototype.computerInformation = function () {
-            var result = "Details => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            var result = "Information => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion, " USB: ").concat(this._usb);
             console.log(result);
         };
         return Lenovo;
@@ -252,11 +258,17 @@ var tsInheritance = function () {
     // 3.CLASS (Monster)
     var Monster = /** @class */ (function (_super) {
         __extends(Monster, _super);
-        function Monster() {
-            return _super !== null && _super.apply(this, arguments) || this;
+        // Constructor
+        function Monster(mainCard, cpu, ram, harddisk, newVersion, typeC) {
+            //super: üst atadan gelen bilgileri gösterir
+            var _this = _super.call(this, mainCard, cpu, ram, harddisk, newVersion) || this;
+            //this global state gösterir.
+            _this._typeC = typeC;
+            return _this;
         }
+        // function
         Monster.prototype.computerInformation = function () {
-            var result = "Details => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            var result = "Information => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion, " USB: ").concat(this._typeC);
             console.log(result);
         };
         return Monster;
@@ -270,20 +282,22 @@ var tsInheritance = function () {
     console.log("Version: " + computerInstance._newVersion);
     computerInstance.computerInformation();
     console.log("**********************************************");
-    var lenovoInstance = new Lenovo("Lenovo", "i10", 8, "1TB", false);
+    var lenovoInstance = new Lenovo("Lenovo", "i10", 8, "1TB", false, "2");
     console.log("MAIN CARD: " + lenovoInstance._mainCard);
     console.log("CPU: " + lenovoInstance._cpu);
     console.log("RAM: " + lenovoInstance._ram);
     console.log("HARD DISK: " + lenovoInstance._harddisk);
     console.log("Version: " + lenovoInstance._newVersion);
+    console.log("Usb: " + lenovoInstance._usb);
     lenovoInstance.computerInformation();
     console.log("**********************************************");
-    var monsterInstance = new Monster("Monster", "i7", 8, "1TB", false);
+    var monsterInstance = new Monster("Monster", "i7", 8, "1TB", false, "TypeC");
     console.log("MAIN CARD: " + monsterInstance._mainCard);
     console.log("CPU: " + monsterInstance._cpu);
     console.log("RAM: " + monsterInstance._ram);
     console.log("HARD DISK: " + monsterInstance._harddisk);
     console.log("Version: " + monsterInstance._newVersion);
+    console.log("Type: " + monsterInstance._typeC);
     monsterInstance.computerInformation();
 };
 tsInheritance();
