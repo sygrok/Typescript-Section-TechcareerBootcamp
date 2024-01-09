@@ -151,22 +151,22 @@ var tsArray = function () {
 function tsFunction(x, y, z) {
     console.log("Normal: ".concat(x, " ").concat(y, " ").concat(z));
 }
-tsFunction(4, 10, 99);
+// tsFunction(4, 10, 99);
 function tsFunction2(x, y, z) {
     console.log("TS Function2: ".concat(x, " ").concat(y, " ").concat(z));
 }
-tsFunction2(4, 10, "Merhabalar");
+// tsFunction2(4, 10, "Merhabalar");
 function tsFunction3(x, y, z) {
     console.log("TS Function3: ".concat(x, " ").concat(y, " ").concat(z));
 }
-tsFunction3(44, 10, "Merhabalar");
-tsFunction3(true, 10, "Merhabalar");
-tsFunction3("Malatya", 10, "Merhabalar");
+// tsFunction3(44, 10, "Merhabalar");
+// tsFunction3(true, 10, "Merhabalar");
+// tsFunction3("Malatya", 10, "Merhabalar");
 // void: geriye bir şey dönderme
 function tsFunction4(x, y, z) {
     console.log("TS Function4: ".concat(x, " ").concat(y, " ").concat(z));
 }
-tsFunction4("Malatya", 10, "Merhabalar");
+// tsFunction4("Malatya", 10, "Merhabalar");
 function tsFunction5(x, y, z) {
     //console.log(`TS Function4: ${x} ${y} ${z}`);
     //return 10;
@@ -189,7 +189,7 @@ var tsEnum = function () {
     var otherColor = colors.color3;
     console.log(otherColor);
 };
-tsEnum();
+// tsEnum();
 // #### CLASS #################################################
 var tsClass = function () {
     var Computer = /** @class */ (function () {
@@ -213,8 +213,6 @@ var tsClass = function () {
     console.log("VERSION: " + computerIntance._newVersion);
 };
 // tsClass();
-// #### GENERICS #################################################
-// TypeScript Generics
 // #### INHERITANCE #################################################
 // TypeScript Inheritance
 // this
@@ -288,7 +286,7 @@ var tsInheritance = function () {
     console.log("RAM: " + lenovoInstance._ram);
     console.log("HARD DISK: " + lenovoInstance._harddisk);
     console.log("Version: " + lenovoInstance._newVersion);
-    console.log("Usb: " + lenovoInstance._usb);
+    console.log("USB: " + lenovoInstance._usb);
     lenovoInstance.computerInformation();
     console.log("**********************************************");
     var monsterInstance = new Monster("Monster", "i7", 8, "1TB", false, "TypeC");
@@ -297,14 +295,80 @@ var tsInheritance = function () {
     console.log("RAM: " + monsterInstance._ram);
     console.log("HARD DISK: " + monsterInstance._harddisk);
     console.log("Version: " + monsterInstance._newVersion);
-    console.log("Type: " + monsterInstance._typeC);
+    console.log("TYPE: " + monsterInstance._typeC);
     monsterInstance.computerInformation();
 };
-tsInheritance();
+// tsInheritance();
+// #### ACCESS MODIFIER #################################################
+// TypeScript Sınıflar
+// OOP
+// this
+var tsAccessModifierClass = function () {
+    // CLASS
+    var Computer = /** @class */ (function () {
+        // CONSTRUCTOR
+        function Computer(mainCard, cpu, ram, harddisk, newVersion) {
+            this._mainCard = mainCard;
+            this._cpu = cpu;
+            this._ram = ram;
+            this._harddisk = harddisk;
+            this._newVersion = newVersion;
+        }
+        // FUNCTION
+        Computer.prototype.computerInformation = function () {
+            var result = "Information => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            console.log(result);
+        };
+        return Computer;
+    }()); //end class Computer
+    // 2.CLASS (MSI)
+    // protected: subClass alanda çalışır.
+    var Msi = /** @class */ (function (_super) {
+        __extends(Msi, _super);
+        // Constructor
+        function Msi(mainCard, cpu, ram, harddisk, newVersion, usb) {
+            //super: üst atadan gelen bilgileri gösterir
+            var _this = _super.call(this, mainCard, cpu, ram, harddisk, newVersion) || this;
+            //this global state gösterir.
+            _this._usb = usb;
+            return _this;
+        }
+        // function
+        Msi.prototype.computerInformation = function () {
+            var result = "Information => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, "  NewVersion: ").concat(this._newVersion, " USB: ").concat(this._usb);
+            console.log(result);
+        };
+        return Msi;
+    }(Computer));
+    // INSTANCE (Computer)
+    var computerInstance = new Computer("Computer", "i7", 16, "512gb", true);
+    console.log("MAIN CARD: " + computerInstance._mainCard);
+    console.log("CPU: " + computerInstance._cpu);
+    console.log("RAM: " + computerInstance._ram);
+    //console.log("HARD DISK: " + computerInstance._harddisk);
+    //console.log("Version: " + computerInstance._newVersion);
+    computerInstance.computerInformation();
+    console.log("**********************************************");
+    // INSTANCE (MSI)
+    var msiInstance = new Msi("Lenovo", "i10", 8, "1TB", false, "2");
+    console.log("MAIN CARD: " + msiInstance._mainCard);
+    console.log("CPU: " + msiInstance._cpu);
+    console.log("RAM: " + msiInstance._ram);
+    //console.log("HARD DISK: " + msiInstance._harddisk);
+    //console.log("Version: " + msiInstance._newVersion);
+    console.log("USB: " + msiInstance._usb);
+    msiInstance.computerInformation();
+    console.log("**********************************************");
+    // console.log("RAM: " + computerIntance._ram); //private: sadece o classta çalışır
+    // console.log("VERSION: " + computerIntance._newVersion); // protected extends değilse sadece o classta çalışır
+};
+tsAccessModifierClass();
 // #### ABSTRACT #################################################
 // TypeScript Abstract
 // #### INTERFACE #################################################
 // TypeScript Interface
+// #### GENERICS #################################################
+// TypeScript Generics
 // TypeScript Null ve Undefined
 // TypeScript Never
 // TypeScript Type Assertion
