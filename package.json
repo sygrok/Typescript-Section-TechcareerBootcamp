@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon -q ./src/index.js",
-    "typescript": "tsc -w ./src/index.ts"
+    "typescript": "tsc -w ./src/index.ts",
+    "typescript-": "tsc -w"
   },
   "keywords": [],
   "author": "",
