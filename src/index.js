@@ -362,7 +362,63 @@ var tsAccessModifierClass = function () {
     // console.log("RAM: " + computerIntance._ram); //private: sadece o classta çalışır
     // console.log("VERSION: " + computerIntance._newVersion); // protected extends değilse sadece o classta çalışır
 };
-tsAccessModifierClass();
+// tsAccessModifierClass();
+// #### ENCAPSULATION #################################################
+// Encapsulation: private
+/*
+ Encapsulation(Kapsulleme) bir sınıf içerisinde bazı verileri erişim kısıtlaması getirir.
+Amaç: Verinin dış dünyalayla kapalı olmasını sağlamak ancak sadece bizim belirlediğimiz arayüzde kullanabilelim.
+Encapsulation Kısaca: iç yapısı dış dünyayadan gizlenir. böylelikle veri güvenliğini sağlamış oluruz.
+ */
+var tsEncapsulationClass = function () {
+    // CLASS
+    var Computer = /** @class */ (function () {
+        // CONSTRUCTOR
+        function Computer(mainCard, cpu, ram, harddisk, newVersion) {
+            this._mainCard = mainCard;
+            this._cpu = cpu;
+            this._ram = ram;
+            this._harddisk = harddisk;
+            this._newVersion = newVersion;
+        }
+        Object.defineProperty(Computer.prototype, "encapsulationNewVersion", {
+            // ENCAPSULATION (private)
+            // GET (Veriyi getir, okuma)
+            // GET: veri döndeririz
+            get: function () {
+                return this._newVersion;
+            },
+            // SET (Veriyi manipulation, yani değiştirme)
+            // SET: veri dönderilmezzzz
+            set: function (version) {
+                this._newVersion = version;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        // FUNCTION
+        Computer.prototype.computerInformation = function () {
+            var result = "Information => MainCard: ".concat(this._mainCard, " Cpu: ").concat(this._cpu, " Ram: ").concat(this._ram, " Harddisk: ").concat(this._harddisk, " NewVersion: ").concat(this._newVersion);
+            console.log(result);
+        };
+        return Computer;
+    }()); //end class Computer
+    // INSTANCE (Computer)
+    var computerInstance = new Computer("Computer", "i7", 16, "512gb", true);
+    console.log("MAIN CARD: " + computerInstance._mainCard);
+    console.log("CPU: " + computerInstance._cpu);
+    console.log("RAM: " + computerInstance._ram);
+    console.log("HARD DISK: " + computerInstance._harddisk);
+    // private böyle yazamazsınız sadece encapsulation olarak private kullanabilirsin.
+    // Encapsulation(SET)
+    computerInstance.encapsulationNewVersion = false;
+    // Encapsulation(GET)
+    console.log("Version: " + computerInstance.encapsulationNewVersion);
+    //console.log("Version: " + computerInstance._newVersion);
+    computerInstance.computerInformation();
+    console.log("**********************************************");
+};
+tsEncapsulationClass();
 // #### ABSTRACT #################################################
 // TypeScript Abstract
 // #### INTERFACE #################################################

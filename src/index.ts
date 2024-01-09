@@ -456,7 +456,78 @@ let tsAccessModifierClass = () => {
   // console.log("RAM: " + computerIntance._ram); //private: sadece o classta çalışır
   // console.log("VERSION: " + computerIntance._newVersion); // protected extends değilse sadece o classta çalışır
 };
-tsAccessModifierClass();
+// tsAccessModifierClass();
+
+// #### ENCAPSULATION #################################################
+// Encapsulation: private
+/*
+ Encapsulation(Kapsulleme) bir sınıf içerisinde bazı verileri erişim kısıtlaması getirir.
+Amaç: Verinin dış dünyalayla kapalı olmasını sağlamak ancak sadece bizim belirlediğimiz arayüzde kullanabilelim.
+Encapsulation Kısaca: iç yapısı dış dünyayadan gizlenir. böylelikle veri güvenliğini sağlamış oluruz.
+ */
+
+let tsEncapsulationClass = () => {
+  // CLASS
+  class Computer {
+    // FIELD
+    _mainCard: string;
+    public _cpu: string;
+    public _ram: number;
+    public _harddisk: string;
+    private _newVersion: boolean;
+
+    // CONSTRUCTOR
+    constructor(
+      mainCard: string,
+      cpu: string,
+      ram: number,
+      harddisk: string,
+      newVersion: boolean
+    ) {
+      this._mainCard = mainCard;
+      this._cpu = cpu;
+      this._ram = ram;
+      this._harddisk = harddisk;
+      this._newVersion = newVersion;
+    }
+
+    // ENCAPSULATION (private)
+    // GET (Veriyi getir, okuma)
+    // GET: veri döndeririz
+    get encapsulationNewVersion(): boolean {
+      return this._newVersion;
+    }
+
+    // SET (Veriyi manipulation, yani değiştirme)
+    // SET: veri dönderilmezzzz
+    set encapsulationNewVersion(version: boolean) {
+      this._newVersion = version;
+    }
+
+    // FUNCTION
+    computerInformation(): void {
+      let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+      console.log(result);
+    }
+  } //end class Computer
+
+  // INSTANCE (Computer)
+  const computerInstance = new Computer("Computer", "i7", 16, "512gb", true);
+  console.log("MAIN CARD: " + computerInstance._mainCard);
+  console.log("CPU: " + computerInstance._cpu);
+  console.log("RAM: " + computerInstance._ram);
+  console.log("HARD DISK: " + computerInstance._harddisk);
+  // private böyle yazamazsınız sadece encapsulation olarak private kullanabilirsin.
+  // Encapsulation(SET)
+  computerInstance.encapsulationNewVersion = false;
+  // Encapsulation(GET)
+  console.log("Version: " + computerInstance.encapsulationNewVersion);
+
+  //console.log("Version: " + computerInstance._newVersion);
+  computerInstance.computerInformation();
+  console.log("**********************************************");
+};
+tsEncapsulationClass();
 
 // #### ABSTRACT #################################################
 // TypeScript Abstract
