@@ -151,7 +151,7 @@ let tsArray = () => {
 // #### FUNCTIONS #################################################
 // TypeScript Fonksiyonlar
 // void: dönüşü olmayan (Yani işlem sonunda bana birşey döndermee)
-function tsFunction(x, y, z) {
+function tsFunction(x: number, y: number, z: number) {
   console.log(`Normal: ${x} ${y} ${z}`);
 }
 tsFunction(4, 10, 99);
